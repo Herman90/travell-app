@@ -1,0 +1,123 @@
+<!doctype html>
+<html>
+<head>
+	<title>Book right now!</title>
+	<link rel="stylesheet" href="./css/bootstrap.min.css">
+	<link rel="stylesheet" href="./css/main.css">
+</head>	
+<body>
+	<div class="tabs-left">
+		<ul class="nav nav-tabs">
+			<li class="nav-item active"><a class="nav-link" data-toggle="tab" href="#flights" role="tab"><i class="glyphicon glyphicon-info-sign"></i>Flights</a></li>
+			<li class="nav-item"><a class="nav-link" data-toggle="tab" href="#hotels" role="tab"><i class="glyphicon glyphicon-info-sign"></i>Hotels</a></li>
+			<li class="nav-item"><a class="nav-link" data-toggle="tab" href="#cars" role="tab"><i class="glyphicon glyphicon-info-sign"></i>Cars</a></li>
+		</ul>
+		<div class="tab-content">
+			<div class="tab-pane active" id="flights" role="tabpanel">
+				<div>
+					<form>
+						<div class="form-group row">
+							<div class="col-xs-12 col-sm-6">
+								<label for="startDate">Start Date</label>
+								<input class="form-control" placeholder="" type="date" name="startDate">
+							</div>
+							<div class="col-xs-12 col-sm-6">
+								<label for="endDate">End Date</label>
+								<input class="form-control"  type="date" name="endDate">
+							</div> 
+						</div>
+						<div class="form-group row">
+							<div class="col-xs-12">
+								<label for="from">From</label>
+								<input class="form-control" placeholder="type arrival" type="text" name="from">
+							</div>
+						</div>
+						<div class="form-group row">
+							<div class="col-xs-12">
+								<label for="to">To</label>
+								<input class="form-control" placeholder="type destination" type="text" name="to">
+							</div>
+						</div>
+						<div class="form-group row">
+					      <div class="col-xs-12 pull-right">
+					      	<button type="clear" class="btn btn-link">Clear</button>
+					        <button type="submit" class="btn btn-primary">Search</button>
+					      </div>
+					    </div>
+					</form>
+				</div>
+			</div>
+			<div class="tab-pane" id="hotels" role="tabpanel">
+				<form>
+						<div class="form-group row">
+							<div class="col-xs-12 col-sm-6">
+								<label for="startDate">Start Date</label>
+								<input class="form-control" placeholder="" type="date" name="startDate">
+							</div>
+							<div class="col-xs-12 col-sm-6">
+								<label for="endDate">End Date</label>
+								<input class="form-control"  type="date" name="endDate">
+							</div> 
+						</div>
+						<div class="form-group row">
+							<div class="col-xs-12">
+								<label for="amenities">Amenities</label>
+								<select class="form-control">
+									<option>
+										<span class="glyphicon glyphicon-star"></span>
+										<span class="glyphicon glyphicon-star"></span>
+										<span class="glyphicon glyphicon-star"></span>
+										<span class="glyphicon glyphicon-star"></span>
+										<span class="glyphicon glyphicon-star"></span>
+										Hotel
+									</option>
+									<option></option>
+									<option></option>
+								</select>
+							</div>
+						</div>
+						<div class="form-group row">
+							<div class="col-xs-12">
+								<label for="hotelLocation">Location</label>
+								<input class="form-control" placeholder="" type="text" name="hotelLocation">
+							</div>
+						</div>
+					</form>
+			</div>
+			<div class="tab-pane" id="cars" role="tabpanel">
+				<form>
+						<div class="form-group row">
+							<div class="col-xs-12 col-sm-6">
+								<label for="startDate">Start Date</label>
+								<input class="form-control" placeholder="" type="date" name="startDate">
+							</div>
+							<div class="col-xs-12 col-sm-6">
+								<label for="endDate">End Date</label>
+								<input class="form-control"  type="date" name="endDate">
+							</div> 
+						</div>
+						<div class="form-group row">
+							<div class="col-xs-12">
+								<label for="amenities">Type</label>
+								<select class="form-control">
+									<option>Economy</option>
+									<option>Primary</option>
+									<option>Laxury</option>
+								</select>
+							</div>
+						</div>
+						<div class="form-group row">
+							<div class="col-xs-12">
+								<label for="carLocation">Location</label>
+								<input class="form-control" placeholder="" type="text" name="carLocation">
+							</div>
+						</div>
+					</form>
+			</div>
+		</div>
+	</div>
+	<script src="./js/angular.min.js"></script>
+	<script src="./js/jquery.min.js"></script>
+	<script src="./js/bootstrap.min.js"></script>
+</body>
+</html>
