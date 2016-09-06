@@ -1,15 +1,20 @@
 'use strict';
 
 angular.module('bookings')
-    .directive('dateinterval', function dateIntervelDirective(){
+    .directive('dateInterval', dateIntervelDirective);
+    
+    function dateIntervelDirective(){
         return {
             restrict: 'AE',
             replace: true,
-            templateUrl: '../../views/dateInterval.html',
-            link: function(scope, elem, attr){
-                scope.minDate = new Date();
-                scope.maxDate = (new Date()).setDate(scope.minDate.getDate() + 60);
-            }
+            scope: {},
+            bindToController: {
+                startDate: "=",
+                endDate: "="
+            },
+            controller: "DateIntervalController",
+            controllerAs: "interval",
+            templateUrl: '../../views/dateInterval.html'
         };
-    });
+    }
     

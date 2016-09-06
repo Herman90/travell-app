@@ -1,0 +1,10 @@
+<div>
+    <h3 class="text-uppercase">previous searches</h3>
+    <ul class="list-unstyled">
+        <li ng-repeat="search1 in searches.previousSearches">
+            <i ng-class="searches.getIconClassByType(search1.type)" class="fa"></i>
+            <span>{{search1.string}}</span>
+            <a class="fa fa-close pull-right" ng-click="searches.removeSearch(search1)"></a>
+        </li>
+    </ul>
+</div>

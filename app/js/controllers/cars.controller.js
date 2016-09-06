@@ -1,20 +1,16 @@
 'use strict';
 
 angular.module('bookings')
-    .controller('CarsController', carsController);
+    .controller('CarsController', ['ReservationService', carsController]);
     
-function carsController($scope){
-    $scope.types = ['Economy', 'Primary', 'Laxury'];
-    $scope.selectedType = $scope.types[0];
-    $scope.interval = {
-        startDate: "",
-        endDate: ""
-    }
-    
-    $scope.search = function(isValid){
+function carsController(reservationService){
+    var vm = this;
+    vm.types = ['Economy', 'Primary', 'Laxury'];
+    vm.selectedType = vm.types[0];
+   
+    vm.search = function(isValid){
         if(isValid){
-            console.log('You search for:')
-            console.log($scope.interval.startDate + ' - ' + $scope.interval.endDate + ':' + $scope.selectedType + ', ' + $scope.location);
+            reservationService.searchForCar(vm.selectedType, vm.location, vm.interval.startDate, vm.interval.endDate);
         }
     }
 }
