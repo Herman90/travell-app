@@ -2,20 +2,33 @@
     'use strict';
 
     angular.module('bookings')
-        .controller('HotelsController', ['SearchService', HotelsController]);
+        .controller('HotelsController', HotelsController);
+        
+    HotelsController.$inject = ['SearchService']
         
     function HotelsController(searchService){
         var vm = this;
         
-        vm.hotel = {};
+        vm.search = searchForHotel;
+        vm.reset = reset;
         
-        vm.search = function(isValid){
+        init();
+        
+        function searchForHotel(isValid){
             if(isValid){
-                searchService.searchForHotel(vm.hotel.amenities, vm.hotel.location, vm.hotel.interval.startDate, vm.hotel.interval.endDate);
+                searchService.searchForHotel(vm.hotel);
             }
         }
         
-        vm.reset = function(){
+        function reset(){
+            newHotelSearch();
+        }
+        
+        function init(){
+            newHotelSearch();
+        }
+        
+        function newHotelSearch(){
             vm.hotel = {};
         }
     }

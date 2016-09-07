@@ -15,14 +15,21 @@
     function NavigationController(){
         var vm = this;
         
-        vm.activeTab = 1;
+        vm.isSelected = isSelected;
+        vm.selectTab = selectTab;
         
-        vm.isSelected = function(i){
+        init();
+        
+        function isSelected(i){
             return vm.activeTab === i;
         }
         
-        vm.selectTab = function(i){
+        function selectTab(i){
             vm.activeTab = i;
+        }
+        
+        function init(){
+            vm.activeTab = 1;
         }
     }
 })();

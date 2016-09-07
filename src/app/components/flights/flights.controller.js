@@ -2,20 +2,33 @@
     'use strict';
     
     angular.module('bookings')
-        .controller('FlightsController', ['SearchService', flightsController]);
+        .controller('FlightsController', FlightsController);
+        
+    FlightsController.$inject = ['SearchService']
     
-    function flightsController(searchService){
+    function FlightsController(searchService){
         var vm = this;
         
-        vm.flight = {};
+        vm.search = searchForFlight;
+        vm.reset = reset;
         
-        vm.search = function(isValid){
+        init();
+        
+        function searchForFlight(isValid){
             if(isValid){
-                searchService.searchForFlight(vm.flight.departure, vm.flight.arrival, vm.flight.interval.startDate, vm.flight.interval.endDate);
+                searchService.searchForFlight(vm.flight);
             }
         }
         
-        vm.reset = function(){
+        function reset(){
+            newFlightSearch();
+        }
+        
+        function init(){
+            newFlightSearch();
+        }
+        
+        function newFlightSearch(){
             vm.flight = {};
         }
     }
