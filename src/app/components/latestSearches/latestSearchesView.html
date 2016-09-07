@@ -1,13 +1,13 @@
-<div>
+<div ng-show="ctrl.previousSearches">
     <h4 class="text-uppercase">previous searches</h4>
-    <ul class="list-unstyled">
-        <li ng-repeat="search in ctrl.previousSearches track by $index">
+    <ul class="list-unstyled list-group">
+        <li class="list-group-item" ng-repeat="search in ctrl.previousSearches track by $index">
             <i ng-class="search.icon" class="fa"></i>
             <span>{{search.dates.start | date : 'MMM d, y'}}</span>
             <span>-</span>
             <span>{{search.dates.end | date : 'MMM d, y'}}</span>
             <span>,</span>
-            <span class="fa" ng-bind-html="search.details"></span>
+            <span class="text-uppercase" ng-bind-html="search.details"></span>
             <a class="fa fa-close pull-right" ng-click="ctrl.removeSearch(search.id)"></a>
         </li>
     </ul>

@@ -60,7 +60,7 @@
         
         function transformHotelSearch(search){
             var transformedSearch = transformSearch(search);
-            transformedSearch.details = $sce.trustAsHtml(search.location + ', ' + Array(parseInt(search.amenities) + 1).join('&#xf005;'));
+            transformedSearch.details = $sce.trustAsHtml(search.location + ', <span class="fa">' + Array(parseInt(search.amenities) + 1).join('&#xf005;') + '</span>');
             
             return transformedSearch;
         }
