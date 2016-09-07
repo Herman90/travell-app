@@ -20,7 +20,6 @@
         vm.getClass = getClass;
         
         function getClass(path){
-            debugger;
             return ($location.path().substr(0, path.length) === path) ? 'active' : '';
         }
     }

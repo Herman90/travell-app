@@ -4,9 +4,9 @@
     angular.module('bookings')
         .controller('HotelsController', HotelsController);
         
-    HotelsController.$inject = ['SearchService', '$rootScope']
+    HotelsController.$inject = ['SearchService', '$rootScope', '$sce']
         
-    function HotelsController(searchService, $rootScope){
+    function HotelsController(searchService, $rootScope, $sce){
         var vm = this;
         
         vm.search = searchForHotel;
@@ -26,12 +26,33 @@
         }
         
         function init(){
+            vm.amenities = [
+            {
+                value: 1,
+                text: $sce.trustAsHtml('&#xf005')
+            },
+            {
+                value: 2,
+                text: $sce.trustAsHtml('&#xf005&#xf005')
+            },
+            {
+                value: 3,
+                text: $sce.trustAsHtml('&#xf005&#xf005&#xf005')
+            },
+            {
+                value: 4,
+                text: $sce.trustAsHtml('&#xf005&#xf005&#xf005&#xf005')
+            },
+            {
+                value: 5,
+                text: $sce.trustAsHtml('&#xf005&#xf005&#xf005&#xf005&#xf005')
+            }];
             newHotelSearch();
         }
         
         function newHotelSearch(){
             vm.hotel = {};
-            vm.hotel.amenities = 1;
+            vm.hotel.amenities = '1';
         }
     }
 })();
