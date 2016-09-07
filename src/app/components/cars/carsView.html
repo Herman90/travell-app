@@ -1,21 +1,21 @@
-<form name="bookCar" ng-submit="cars.search(bookCar.$valid)" novalidate>
-    <date-interval start-date="cars.interval.startDate" end-date="cars.interval.endDate"></date-interval>
+<form name="bookCar" ng-submit="ctrl.search(bookCar.$valid)" novalidate>
+    <date-interval start-date="ctrl.car.interval.startDate" end-date="ctrl.car.interval.endDate"></date-interval>
     <div class="form-group row">
         <div class="col-xs-12">
             <label for="types">Type</label>
-            <select class="form-control" name="types" ng-model="cars.selectedType" ng-options="x for x in ::cars.types" required>
+            <select class="form-control" name="types" ng-model="ctrl.car.type" ng-options="x for x in ::ctrl.types" required>
             </select>
         </div>
     </div>
     <div class="form-group row">
         <div class="col-xs-12">
             <label for="carLocation">Location</label>
-            <input class="form-control" placeholder="" type="text" name="carLocation" ng-model="cars.location" required>
+            <input class="form-control" placeholder="" type="text" name="carLocation" ng-model="ctrl.location" required>
         </div>
     </div>
     <div class="form-group row">
         <div class="col-xs-12 text-right">
-            <button type="clear" class="btn btn-link">Clear</button>
+            <button type="clear" class="btn btn-link" ng-click="ctrl.reset()">Clear</button>
             <button type="submit" class="btn btn-primary" ng-disabled="!bookCar.$valid">Search</button>
         </div>
     </div>

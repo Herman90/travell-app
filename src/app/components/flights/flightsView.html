@@ -1,0 +1,21 @@
+<form name="bookFlight" ng-submit="ctrl.search(bookFlight.$valid)" novalidate>                 
+    <date-interval start-date="ctrl.flight.interval.startDate" end-date="ctrl.flight.interval.endDate"></date-interval>
+    <div class="form-group row">
+        <div class="col-xs-12">
+            <label for="from">From</label>
+            <input class="form-control" required type="text" name="from" ng-model="ctrl.flight.departure">
+        </div>
+    </div>
+    <div class="form-group row">
+        <div class="col-xs-12">
+            <label for="to">To</label>
+            <input class="form-control" required type="text" name="to" ng-model="ctrl.flight.arrival">
+        </div>
+    </div>
+    <div class="form-group row">
+        <div class="col-xs-12 text-right">
+            <button type="clear" class="btn btn-link" ng-click="ctrl.reset()">Clear</button>
+            <button type="submit" class="btn btn-primary" ng-disabled="!bookFlight.$valid">Search</button>
+        </div>
+    </div>
+</form>

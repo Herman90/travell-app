@@ -4,16 +4,6 @@ var htmlhint = require("gulp-htmlhint");
 var uglify = require('gulp-uglify');
 var server = require('gulp-webserver');
 
-gulp.task('index', function(){
-	var target = gulp.src('./index.html');
-
-	var injections = gulp.src(['./bower_components/**/*.min.js', './bower_components/jquery/dist/jquery.min.js', './bower_components/**/*.min.css'], {read: false});
-
-	target
-		.pipe(gulpInject(injections))
-		.pipe(gulp.dest('.'));
-});
-
 gulp.task('copyPlugins:js', function(){
 	var jsFiles = ['./bower_components/angular/angular.js', 
 	'./bower_components/jquery/dist/jquery.min.js', 
@@ -22,37 +12,36 @@ gulp.task('copyPlugins:js', function(){
     './bower_components/ngstorage/ngStorage.min.js']
 
 	gulp.src(jsFiles)
-	.pipe(gulp.dest('./app/js'));
+	.pipe(gulp.dest('./src/assets/js'));
 });
 
 gulp.task('copyPlugins:css', function(){
 	var cssFiles = ['./bower_components/bootstrap/dist/css/bootstrap.min.css']; 
 
 	gulp.src(cssFiles)
-	.pipe(gulp.dest('./app/css'));
+	.pipe(gulp.dest('./src/assets/css'));
 });
 
 gulp.task('copyPlugins:fonts', function(){
-	var fontFiles = ['./bower_components/bootstrap/dist/fonts/*.*'];
+	var fontFiles = ['./bower_components/bootstrap/dist/fonts/*.*',
+	'./bower_components/font-awesome/fonts/*.*'];
 
 	gulp.src(fontFiles)
-		.pipe(gulp.dest('./app/fonts'));
+		.pipe(gulp.dest('./src/assets/fonts'));
 });
 
 gulp.task('copyPlugins', ['copyPlugins:js', 'copyPlugins:css', 'copyPlugins:fonts']);
 
 gulp.task('html', function(){
-	gulp.src('./app/**/*.html')
+	gulp.src('./src/app/**/*.html')
 		.pipe(htmlhint())
 		.pipe(htmlhint.reporter());
 });
 
 gulp.task('server:start',['copyPlugins', 'html'], function() {
-    gulp.src('./app')
+    gulp.src('./src')
     	.pipe(server({
 	        directoryListing: false,
 	        open: true
     	}));
 });
-
-gulp.task('default', ['index']);

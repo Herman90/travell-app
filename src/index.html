@@ -1,0 +1,36 @@
+<!doctype html>
+<html>
+<head>
+	<title>Book right now!</title>
+	<link rel="stylesheet" href="./assets/css/bootstrap.min.css">
+	<link rel="stylesheet" href="./assets/css/font-awesome.min.css">
+	<link rel="stylesheet" href="./app/components/navigation/navigation.css">
+</head>	
+<body ng-app="bookings">
+	<div class="container">
+		<div class="col-xs-12 col-sm-2">
+			<navigation></navigation>
+		</div>
+		<div class="col-xs-12 col-sm-10" ng-view></div>
+		<div class="col-xs-12"><hr/></div>
+		<div class="col-xs-12">
+			<latest-searches></latest-searches>
+		</div>
+	</div>
+	
+	<script src="./assets/js/angular.js"></script>
+	<script src="./assets/js/angular-route.min.js"></script>
+	<script src="./assets/js/ngStorage.min.js"></script>
+	<script src="./assets/js/jquery.min.js"></script>
+	<script src="./assets/js/bootstrap.min.js"></script>
+	<script src="./app/app.module.js"></script>
+	<script src="./app/app.route.js"></script>
+	<script src="./app/shared/services/search.service.js"></script>
+	<script src="./app/shared/dateRange/dateRange.directive.js"></script>
+	<script src="./app/components/cars/cars.controller.js"></script>
+	<script src="./app/components/flights/flights.controller.js"></script>
+	<script src="./app/components/hotels/hotels.controller.js"></script>
+	<script src="./app/components/navigation/navigation.directive.js"></script>
+	<script src="./app/components/latestSearches/latestSearches.directive.js"></script>
+</body>
+</html>

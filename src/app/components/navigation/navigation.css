@@ -11,7 +11,6 @@
 }
 
 .tabs-left > .nav-tabs {
-  float: left;
   margin-right: 19px;
   border-right: 1px solid #ddd;
 }
@@ -36,5 +35,5 @@
 }
 
 .tabs-left > .tab-content{
-	float: left;
+    float: left;
 }
