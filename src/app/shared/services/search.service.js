@@ -4,14 +4,13 @@
     angular.module('bookings')
         .service('SearchService', SearchService);
         
-    function SearchService($localStorage){
+    function SearchService($localStorage, SEARCH_TYPE){
         var service = this;
         var searches = $localStorage.previousSearches || [];
         
         service.searchForHotel = function(amenities, location, startDate, endDate){
             searches.push({
-                type: "hotel",
-                string: startDate + ' - ' + endDate + ', ' + location + ', ' + amenities,
+                type: SEARCH_TYPE.HOTEL, 
                 amenities:  amenities,
                 location: location,
                 startDate: startDate,
@@ -22,8 +21,7 @@
         
         service.searchForCar = function(carType, location, startDate, endDate){
             searches.push({
-                type: "car",
-                string: startDate + ' - ' + endDate + ', ' + location + ', ' + carType,
+                type: SEARCH_TYPE.CAR,
                 carType:  carType,
                 location: location,
                 startDate: startDate,
@@ -34,8 +32,7 @@
         
         service.searchForFlight = function(departure, arrival, startDate, endDate){
             searches.push({
-                type: "flight",
-                string: startDate + ' - ' + endDate + ', ' + departure + ' > ' + arrival,
+                type: SEARCH_TYPE.FLIGHT,
                 from: departure,
                 to: arrival,
                 startDate: startDate,
