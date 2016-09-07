@@ -20,7 +20,7 @@
                 
             })
             .otherwise({
-                redirectTo: '/'
+                redirectTo: '/flights'
             });
     }
 })();

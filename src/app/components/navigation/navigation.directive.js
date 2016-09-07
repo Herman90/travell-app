@@ -12,24 +12,16 @@
         };
     });
     
-    function NavigationController(){
+    NavigationController.$inject = ['$location'];
+    
+    function NavigationController($location){
         var vm = this;
         
-        vm.isSelected = isSelected;
-        vm.selectTab = selectTab;
+        vm.getClass = getClass;
         
-        init();
-        
-        function isSelected(i){
-            return vm.activeTab === i;
-        }
-        
-        function selectTab(i){
-            vm.activeTab = i;
-        }
-        
-        function init(){
-            vm.activeTab = 1;
+        function getClass(path){
+            debugger;
+            return ($location.path().substr(0, path.length) === path) ? 'active' : '';
         }
     }
 })();

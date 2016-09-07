@@ -14,9 +14,9 @@
         }
     }
     
-    LatestSearchesController.$inject = ['SearchService', 'SEARCH_TYPE', '$sce'];
+    LatestSearchesController.$inject = ['SearchService', 'SEARCH_TYPE', '$sce', '$rootScope'];
     
-    function LatestSearchesController(searchService, SEARCH_TYPE, $sce){
+    function LatestSearchesController(searchService, SEARCH_TYPE, $sce, $rootScope){
         var vm = this;
         
         var icons = {};
@@ -83,12 +83,31 @@
             searchService.getPreviousSearches()
                 .then(transformSearches)
                 .then(setSearches);
+            
+            $rootScope.$on("search_added", searchAddedHandler);
         }
-        
-        
         
         function removeSearch(searchId){
             searchService.removeSearch(searchId);
+            
+            var search = getSearchById(searchId);
+            
+            var i = vm.previousSearches.indexOf(search);
+            
+            if(i != -1) {
+                vm.previousSearches.splice(i, 1);
+            }
+        }
+        
+        function searchAddedHandler(e, data){
+            var transfromedSearch = transformSearches([data])[0];
+            vm.previousSearches.push(transfromedSearch);
+        }
+        
+        function getSearchById(searchId){
+            return vm.previousSearches.filter(function(obj){
+                return obj.id === searchId;
+            })[0];
         }
 }
 })();

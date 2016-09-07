@@ -4,9 +4,9 @@
     angular.module('bookings')
         .controller('FlightsController', FlightsController);
         
-    FlightsController.$inject = ['SearchService']
+    FlightsController.$inject = ['SearchService', '$rootScope']
     
-    function FlightsController(searchService){
+    function FlightsController(searchService, $rootScope){
         var vm = this;
         
         vm.search = searchForFlight;
@@ -16,7 +16,8 @@
         
         function searchForFlight(isValid){
             if(isValid){
-                searchService.searchForFlight(vm.flight);
+                var newSearch = searchService.searchForFlight(vm.flight);
+                $rootScope.$emit("search_added", newSearch);
             }
         }
         
